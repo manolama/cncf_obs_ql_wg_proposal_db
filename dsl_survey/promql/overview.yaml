@@ -1,0 +1,36 @@
+title: Prometheus Query Language
+
+abbreviation: PromQL
+
+copyright: The Prometheus Authors
+
+license: Apache License V2
+
+isOSS: true
+
+paradigms:
+  - functional
+  - declarative
+
+supportedTelemetryTypes:
+  - type: metrics
+    callouts:
+      - title: Default Expansion
+        description: >
+          Data matching the predicate is returned as individual time series by
+          default. Explicit grouping functions must be supplied to aggregate 
+          time series into a single result.
+
+inspirations:
+  - Borgmon from Google
+
+description: >
+  A pipeline based language to analyze time series from metrics and traces in a
+  single query. 
+
+designCallouts: TODO
+
+caveats: TODO
+
+references:
+  - https://prometheus.io/docs/prometheus/latest/querying/basics/
