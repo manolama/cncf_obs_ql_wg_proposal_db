@@ -20,24 +20,22 @@ uses:
       various groups of groups have similar behaviors or if one or more group exhibit
       outlying behavior.
 
+example_description: > 
+  Computes the sum of the metric `http_requests_total` where the tag `handler`
+  has the value `/api/comments` for every unique `job`.
+
 examples:
   - language: PromQL
     query: >
       sum by (job) (
         http_requests_total{handler="/api/comments"}
       )
-    description: >
-      Computes the sum of the metric `http_requests_total` where the tag `handler`
-      has the value `/api/comments` for every unique `job`.
     references:
       - https://prometheus.io/docs/prometheus/latest/querying/examples/#simple-time-series-selection
       - https://prometheus.io/docs/prometheus/latest/querying/examples/#using-functions-operators-etc
 
   - language: ASL
     query: name,http_requests_total,:eq,handler,/api/comments,:eq,:and,:sum,(,job,),:by
-    description: >
-      Computes the sum of the metric `http_requests_total` where the tag `handler`
-      has the value `/api/comments` for every unique `job`.
     references:
       - https://netflix.github.io/atlas-docs/asl/ref/and/
       - https://netflix.github.io/atlas-docs/asl/ref/eq/
@@ -45,22 +43,19 @@ examples:
 
   - language: ANSI SQL
     query: >
-      SELECT metric, job, SUM(value) 
-      FROM http_metrics
-      WHERE metric=='http_requests_total' AND handler='/api/comments' 
-      GROUP BY job
-    description: >
-      Computes the sum of the metric `http_requests_total` where the tag `handler`
-      has the value `/api/comments` for every unique `job`.
+      TODO - example using a traditional RBDMS where the timestamp is a column
+      and the step needs to be computed. That gets ugly
+    caveats:
+      - > 
+        With ANSI SQL and a traditional RBDMS you must specify a time range and a
+        bucketing function to aggregate values for multiple timestamps within a 
+        consolidation window.
 
   - language: UQL
     query: >
       metric http_requests_total
       | filter handler == "/api/comments"
       | group_by [job], sum
-    description: >
-      Computes the sum of the metric `http_requests_total` where the tag `handler`
-      has the value `/api/comments` for every unique `job`.
     references:
       - https://docs.lightstep.com/docs/uql-reference
       - https://docs.lightstep.com/docs/uql-reference

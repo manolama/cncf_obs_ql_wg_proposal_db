@@ -25,8 +25,7 @@ inspirations:
   - Borgmon from Google
 
 description: >
-  A pipeline based language to analyze time series from metrics and traces in a
-  single query. 
+  A functional language with pipeline support for metric analysis.
 
 designCallouts: TODO
 

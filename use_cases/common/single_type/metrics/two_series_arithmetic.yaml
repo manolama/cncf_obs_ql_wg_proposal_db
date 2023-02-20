@@ -7,7 +7,7 @@ description: >
 
 inputs:
   - metric series
-  -
+
 uses:
   - type: Alerting
     description: >
@@ -15,18 +15,18 @@ uses:
 
   - type: Visualization
     description: >
-      Used to reduce the amount of data displayed in a visualization and combine
-      complementary data.
+      Compute averages or ratios, e.g. average latency or percentage of failed requests.
+
+example_description: >
+  Selects two time series, `http_requests_errors` and `http_requests_success`,
+  filtering both where the tag `handler` has the value `/api/comments`, then
+  adding the results
 
 examples:
   - language: PromQL
     query: >
       sum(http_requests_errors{handler="/api/comments"}) + 
       sum(http_requests_success{handler="/api/comments"})
-    description: >
-      Selects two time series, `http_requests_errors` and `http_requests_success`,
-      filtering both where the tag `handler` has the value `/api/comments`, then
-      adding the results
     references:
       - https://prometheus.io/docs/prometheus/latest/querying/examples/#simple-time-series-selection
       - https://prometheus.io/docs/prometheus/latest/querying/examples/#using-functions-operators-etc
@@ -36,10 +36,6 @@ examples:
       name,http_requests_errors,:eq,handler,/api/comments,:eq,:and,
       name,http_requests_success,:eq,handler,/api/comments,:eq,:and,
       :add
-    description: >
-      Selects two time series, `http_requests_errors` and `http_requests_success`,
-      filtering both where the tag `handler` has the value `/api/comments`, then
-      adding the results
     references:
       - https://netflix.github.io/atlas-docs/asl/ref/and/
       - https://netflix.github.io/atlas-docs/asl/ref/eq/
@@ -48,10 +44,6 @@ examples:
   - language: ANSI SQL
     query: >
       TODO
-    description: >
-      Selects two time series, `http_requests_errors` and `http_requests_success`,
-      filtering both where the tag `handler` has the value `/api/comments`, then
-      adding the results
 
   - language: UQL
     query: >
@@ -62,10 +54,6 @@ examples:
       | filter handler == "/api/comments"
       | group_by [], sum
       | join right / (left + right)
-    description: >
-      Selects two time series, `http_requests_errors` and `http_requests_success`,
-      filtering both where the tag `handler` has the value `/api/comments`, then
-      adding the results
     references:
       - https://docs.lightstep.com/docs/uql-reference
       - https://docs.lightstep.com/docs/uql-reference

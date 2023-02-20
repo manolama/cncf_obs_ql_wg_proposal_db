@@ -1,8 +1,7 @@
 # Observability Query Language Proposal Dataset
 
 This repo is a proposed format for capturing data pertaining to the 
-CNCF Observability TAG Query Standardization work group:
-[https://docs.google.com/document/d/1JRQ4hoLtvWl6NqBu_RN8T7tFaFY5jkzdzsB9H-V370A](https://docs.google.com/document/d/1JRQ4hoLtvWl6NqBu_RN8T7tFaFY5jkzdzsB9H-V370A)
+[CNCF Observability TAG Query Standardization work group](https://docs.google.com/document/d/1JRQ4hoLtvWl6NqBu_RN8T7tFaFY5jkzdzsB9H-V370A)
 
 ## Goals
 

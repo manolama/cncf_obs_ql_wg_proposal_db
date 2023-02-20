@@ -21,7 +21,7 @@ attributes:
   - attribute: timestamp
     description: >
       A point in time associated with the measurement. This may be the time when the
-      measurement was taken or or reported. It may also be the start or end of an
+      measurement was taken or reported. It may also be the start or end of an
       interval the measurement represents.
 
   - attribute: value
@@ -30,18 +30,18 @@ attributes:
       Some systems support integer values, others IEEE 754 single or double precision
       floating point values. Some systems include multiple numeric values as summaries
       for an interval. E.g. sum, min, max, count, avg, etc. Others may include special
-      mer-gable structures for estimation of quantiles or cardinalities.
+      mergable structures for estimation of quantiles or cardinalities.
 
 uses:
   - title: Control Plane
     description: >
       Since metrics are well defined and easily machine readable, metrics are often
-      used in control planes to perform automated tasks such as scaling resources
-      or distributing work.
+      used in control planes to perform automated tasks such as scaling resources,
+      canaries, squeeze tests and distributing work.
 
   - title: Alerting
     description: >
-      Again, since they are well defined and easily machine readable, metrics are 
+      Since metrics are well defined and easily machine readable, metrics are 
       used to alert observability consumers of aberrant behavior that may require 
       intervention. 
 
@@ -92,4 +92,4 @@ subtypes:
     description: >
       Often a monotonic counter that has been converted at the measurement source or
       ingress into the delta from the previous measurement. Aggregations on deltas 
-      is much simpler than monotonic counters.
+      are much simpler than monotonic counters.
