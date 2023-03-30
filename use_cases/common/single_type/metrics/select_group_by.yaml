@@ -59,3 +59,8 @@ examples:
     references:
       - https://docs.lightstep.com/docs/uql-reference
       - https://docs.lightstep.com/docs/uql-reference
+
+  - language: DQL
+    query: >
+        sum(http_requests_total) by:job filter:isTrueOrNull(handler="/api/comments")
+
