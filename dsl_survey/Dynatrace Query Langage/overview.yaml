@@ -34,7 +34,8 @@ supportedTelemetryTypes:
         - filter: the operator will filter the metric by applying a condition on the value
         - from, to : those operator can filter the extraction of the metric on a specific timeframe
         - interval : allow us to change the granularity of the data.
-          -
+        - timeframe: creates a timeframe structure from the given start and end timestamps.
+
       - title: metric dimensions
         description: >
           all the other signals ( event, traces, logs...) requires to fetch data to a specific data source
@@ -44,14 +45,15 @@ supportedTelemetryTypes:
   - type: traces, logs, events, bizents, smartscape
     description:
       - spans is targeting all the data representing a distributed trace.
-         That includes the dynatrace traces ( named purepath) collected by the oneagent,and the data ingest through the OpenTelemetry ingest api
-         logs correspond to log data collected by the oneagent or sent to the log ingest api or the opentelemtry logs apî
+        That includes the dynatrace traces ( named purepath) collected by the oneagent,and the data ingest through the OpenTelemetry ingest api
+      - logs correspond to log data collected by the oneagent or sent to the log ingest api or the opentelemtry logs apî
       - events corresponds to all the events collected by the Dynatrace components ( such as the kubernetes events) , but it also include any
         send to the events api of dynatrace
       - bizzvents is a dynatrace concept created to create event business events from data present in http request ( header, payload, url parameters...Etc). the purpose of
         bizz events is to keep track of a business flow of a given application or platform. the bizzevents are mainly created by the oneagent, but it is also possible to
         ingest external bizz events with the api
       - smartscape is a specific dynatrace concept to collect data on the dependency map.
+      - dynatrace entities to collect object reference of dynatrace entities
     callouts:
       - title: Aggregation
         description: >
@@ -60,6 +62,20 @@ supportedTelemetryTypes:
           - max
           - min
           - sum
+          - count
+          - countif
+          - countDistinct
+          - median
+          - percentile
+          - takeFirst
+          - takeLast
+          - collectDistinct
+          - takeMin
+          - takeMax
+          - stddev
+          - variance
+          - correlation
+          - takeany
         every aggregation function can be combined with the command by that will split the metric into one or several dimensions ( labels)
 
       - title: Various operator

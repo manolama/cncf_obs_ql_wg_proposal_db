@@ -62,5 +62,5 @@ examples:
 
   - language: DQL
     query: >
-        sum(http_requests_total) by:job filter:isTrueOrNull(handler="/api/comments")
+        timeseries sum(http_requests_total) by:job filter:isTrueOrNull(handler="/api/comments")
 
