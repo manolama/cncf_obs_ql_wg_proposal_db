@@ -1,0 +1,112 @@
+title: Log Query Language
+
+abbreviation: LogQL
+
+copyright: Grafana Labs
+
+license: GNU Affero General Public License v3.0
+
+isOSS: true
+
+paradigms:
+  - functional
+  - declarative
+  - pipeline
+
+supportedTelemetryTypes:
+  - type: logs
+    callouts:
+      - title: Log Query
+        description: >
+          A query that returns individual log entries matching some criteria from the storage backend. All
+          log queries must specify a stream selector, and may include a subsequent log pipeline.
+
+          Example:
+            {stream selector} | log pipeline
+
+      - title: Stream Selector
+        description: >
+          A set of label keys and values, comma delimited and wrapped within {braces}. Logs with
+          indices matching the stream selector are fetched from the storage backend. A regular expression
+          can also be specified with the tilde operator.
+          
+          Example:
+            {cluster="central", env=~"dev|prod"}
+
+          This would be analagous to the following SQL query:
+            SELECT * FROM data WHERE cluster='central' AND (env='dev' OR env='prod')
+
+      - title: Log Pipeline
+        description: >
+          A log pipeline is a set of stage expressions chained together with a pipe | character. There
+          are five types of pipeline stage:
+            - line filter
+            - label filter
+            - parser
+            - line format
+            - label format
+
+      - title: Line filter
+        description: >
+          TODO
+
+      - title: Label filter
+        description: >
+          TODO
+
+      - title: Parser
+        description: >
+          TODO
+
+      - title: Line format
+        description: >
+          TODO
+
+      - title: Label format
+        description: >
+          TODO
+
+      - title: Metric query
+        description: >
+          TODO
+
+      - title: Log range aggregation
+        description: >
+          TODO
+
+      - title: Unwrapped range aggregation
+        description: >
+          TODO
+
+      - title: Built-in aggregation operators
+        description: >
+          TODO
+
+inspirations:
+  - PromQL
+
+description: >
+  A functional language with pipeline support for log analysis. All LogQL queries consist
+  of a stream selector, and an optional log pipeline. The stream selector specifies label values
+  which should be selected from the raw data, and has regular expression support. The selected
+  data can then be piped into any number of stage expressions chained together to form a log pipeline.
+  Each stage can filter, parse, or mutate log lines and their respective labels. A query composed of
+  a stream selector and log pipeline is known as a Log Query.
+
+  Additionally, aggregation functions may be applied to data selected from a LogQL pipeline. This
+  makes it possible to create metrics (time series) from Log Queries. By specifying a duration and an
+  aggregation function, one may calculate the count or rate of entities received. Using parsers, it is
+  possible to index on values embedded in the log line, which may subsequently be used as the sample
+  value instead of the log line. This process is called 'unwrapping'. PromQL style aggregation built-ins
+  like 'sum' and 'avg' may be used to aggregate across label values in the produced metrics. Queries that
+  perform this type of aggregation on Log Queries to produce time series are called Metric Queries.
+
+designCallouts: TODO
+
+caveats: TODO
+
+references:
+  - https://grafana.com/docs/loki/latest/logql/
+  - https://grafana.com/docs/loki/latest/logql/log_queries/
+  - https://grafana.com/docs/loki/latest/logql/metric_queries/
+  - https://grafana.com/docs/loki/latest/logql/query_examples/
